@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { SvgIconProps } from '@mui/material'
 import styled from 'styled-components'
 import { Border, Colors, Spacing } from '../../styles'
 import { icons } from '../../styles/images'
@@ -64,7 +64,7 @@ interface Props {
     placeholder?: string
     pattern?: string
     invalidInput?: string
-    inputIcon?: IconProp
+    inputIcon?: React.JSXElementConstructor<SvgIconProps>
 }
 
 function GTInputSelect(props: Props): JSX.Element {

@@ -1,12 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { createElement } from 'react'
+import { SvgIconProps } from '@mui/material'
 import styled from 'styled-components'
 import { Colors, Dimensions } from '../../styles'
-import { TIconColor } from '../../styles/colors'
-import { TIconSize } from '../../styles/dimensions'
-import Flex from './Flex'
-
-export type TIconType = IconProp | string
 
 const IconContainer = styled.div<{ size: string }>`
     width: ${({ size }) => size};
@@ -18,27 +13,47 @@ const IconContainer = styled.div<{ size: string }>`
     user-select: none;
     flex-shrink: 0;
 `
+
 const ImageContainer = styled.img`
     width: 100%;
     aspect-ratio: 1;
 `
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)<{ height: string; hidden?: boolean }>`
-    height: ${({ height }) => height};
-    visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
-    aspect-ratio: 1;
-`
+
+const iconColor = {
+    white: '#FFFFFF',
+    gray: '#717179',
+    red: '#E24858',
+    yellow: '#FFBA0D',
+    blue: '#25BEFF',
+    green: '#41802E',
+    orange: '#FF8200',
+    purple: '#5634CF',
+    black: '#000000',
+}
+
+const iconSize = {
+    small: '12px',
+    default: '16px',
+    medium: '32px',
+    gtLogo: '64px',
+    large: '50px',
+}
+
+type TIconSize = keyof typeof iconSize
+type TIconColor = keyof typeof iconColor
+export type TIconType = React.JSXElementConstructor<SvgIconProps> | string
+
 interface IconProps {
     icon: TIconType
     size?: TIconSize
-    color?: TIconColor // should take priority over colorHex
+    color?: TIconColor
     colorHex?: string
     className?: string
     hidden?: boolean
 }
+
 export const Icon = ({ icon, size = 'default', color, colorHex, className, hidden }: IconProps) => {
     const dimension = Dimensions.iconSize[size]
-    // priority is color -> colorHex -> black
-    const iconColor = color ? Colors.icon[color] : colorHex
 
     if (typeof icon === 'string')
         return (
@@ -46,15 +61,10 @@ export const Icon = ({ icon, size = 'default', color, colorHex, className, hidde
                 {!hidden && <ImageContainer src={icon} />}
             </IconContainer>
         )
-    return (
-        <Flex>
-            <StyledFontAwesomeIcon
-                icon={icon}
-                color={iconColor}
-                className={className}
-                height={dimension}
-                hidden={hidden}
-            />
-        </Flex>
-    )
+
+    const iconColor = color ? Colors.icon[color] : colorHex
+
+    return createElement(icon, {
+        sx: { color: iconColor, fontSize: dimension, visibility: hidden ? 'hidden' : 'visible' },
+    })
 }

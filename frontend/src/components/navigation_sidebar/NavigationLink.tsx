@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { useNavigate } from 'react-router-dom'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import styled from 'styled-components'
 import { TASK_FOLDER_DEFAULT_ID, TRASH_FOLDER_ID } from '../../constants'
 import { usePreviewMode, useToast } from '../../hooks'
@@ -12,7 +11,7 @@ import { TIconColor } from '../../styles/colors'
 import { icons } from '../../styles/images'
 import { DropItem, DropType, TTaskFolder } from '../../utils/types'
 import { countWithOverflow } from '../../utils/utils'
-import { Icon } from '../atoms/Icon'
+import { Icon, TIconType } from '../atoms/Icon'
 import { useCalendarContext } from '../calendar/CalendarContext'
 import { toast } from '../molecules/toast'
 import Tip from '../radix/Tip'
@@ -77,7 +76,7 @@ interface NavigationLinkProps {
     isCurrentPage: boolean
     link: string
     title: string
-    icon?: IconProp | string
+    icon?: TIconType
     iconColor?: TIconColor
     taskFolder?: TTaskFolder
     count?: number

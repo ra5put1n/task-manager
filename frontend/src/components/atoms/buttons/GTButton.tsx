@@ -1,11 +1,10 @@
 import React from 'react'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import styled, { css } from 'styled-components'
 import { TShortcutName } from '../../../constants/shortcuts'
 import { Border, Colors, Spacing, Typography } from '../../../styles'
 import { TIconColor, TTextColor } from '../../../styles/colors'
 import Tip, { TTooltipSide } from '../../radix/Tip'
-import { Icon } from '../Icon'
+import { Icon, TIconType } from '../Icon'
 import NoStyleButton from './NoStyleButton'
 
 type TButtonType = 'primary' | 'secondary' | 'destructive' | 'control' | 'icon'
@@ -131,11 +130,11 @@ export interface GTButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButto
     value?: React.ReactNode
     textColor?: TTextColor
     // left icon
-    icon?: IconProp | string
+    icon?: TIconType
     iconColor?: TIconColor
     iconColorHex?: string
     // right icon
-    rightIcon?: IconProp | string
+    rightIcon?: TIconType
     rightIconColor?: TIconColor
     rightIconColorHex?: string
     // tooltip

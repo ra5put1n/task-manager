@@ -1,6 +1,6 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import styled from 'styled-components'
 import { Spacing, Typography } from '../../../styles'
+import { TIconType } from '../Icon'
 import GTButton from '../buttons/GTButton'
 
 const ToastContainer = styled.div`
@@ -48,7 +48,7 @@ const stopPropogationWrapper = (onClick: (e: React.MouseEvent) => void) => {
 
 interface ToastAction {
     label: string
-    icon?: IconProp | string
+    icon?: TIconType
     onClick: () => void
 }
 interface UndoableToastAction extends ToastAction {
