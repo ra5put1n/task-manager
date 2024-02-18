@@ -11,13 +11,15 @@
     "cy:run": "cypress run",
     "prepare": "cd .. && husky install frontend/.husky",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html,tsx}\"",
-    "prettier:write": "prettier --write \"src/**/*.{ts,css,html,tsx}\""
+    "prettier:write": "prettier --write \"src/**/*.{ts,css,html,tsx}\"",
+    "electron": "electron ."
   },
   "lint-staged": {
     "*.{tsx,ts}": [
       "prettier --write"
     ]
   },
+  "main": "electron.js",
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
@@ -63,6 +65,7 @@
     "buffer": "^6.0.3",
     "cmdk": "^0.1.19",
     "dayjs": "^1.11.5",
+    "electron": "^28.2.3",
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
     "lottie-react": "^2.3.1",
