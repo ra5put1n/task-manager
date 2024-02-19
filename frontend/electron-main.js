@@ -1,13 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
-const { fileURLToPath } = require('url')
-// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const { BrowserWindow, app } = require('electron')
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const path = require('path')
 
 let mainWindow
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 async function createWindow() {
     // Dynamically import the electron-is-dev module
@@ -21,7 +17,7 @@ async function createWindow() {
             contextIsolation: false,
         },
     })
-
+    // eslint-disable-next-line no-undef
     const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, './dist/react/index.html')}`
 
     mainWindow.loadURL(startURL)
