@@ -44,7 +44,6 @@ const App = () => {
                 <meta charSet="utf-8" />
                 <title>General Task (beta)</title>
                 <link rel="icon" href="/images/favicon.png" />
-                <script src="https://kit.fontawesome.com/ad8a57c09f.js" crossOrigin="anonymous"></script>
                 <base target="_blank" />
                 <meta
                     content="Find focus like never before with the best free productivity tool on the market!"
