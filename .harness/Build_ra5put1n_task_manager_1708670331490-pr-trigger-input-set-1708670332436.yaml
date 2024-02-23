@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_ra5put1n_task_manager_1708670331490-pr-trigger-input-set
+  identifier: Build_ra5put1n_task_manager_1708670331490prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_ra5put1n_task_manager_1708670331490
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
